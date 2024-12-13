@@ -7,11 +7,15 @@
 
 import express from "express";
 import axios from "axios";
+import dotenv from 'dotenv';
 
 const app = express();
 app.use(express.json());
+dotenv.config();
 
-const { WEBHOOK_VERIFY_TOKEN, GRAPH_API_TOKEN, PORT } = process.env;
+const { WEBHOOK_VERIFY_TOKEN, GRAPH_API_TOKEN } = process.env;
+const PORT = process.env.PORT || 3000;
+console.log(process.env)
 
 // Store user session states in memory for flow control (this is just for demo purposes)
 const userSession = {};
